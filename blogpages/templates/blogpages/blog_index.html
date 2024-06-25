@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content%}
+
+{{ page.title }}
+<br>
+{{ page.subtitle }}
+{{ page.body|richtext }}
+<hr>
+
+<h4>Blog posts are below</h4>
+{% for blog_post in blogpages %}
+    <a href="{{ blog_post.url }}">
+        {{ blog_post.title }}
+    </a>
+    <p>{{ blog_post.subtitle }}</p>
+
+{% endfor %}
+
+
+{% endblock %}
