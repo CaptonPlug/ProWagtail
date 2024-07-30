@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+
+{% block content %}
+
+    <h1>{{ page.title }}</h1>
+    <h2>{{ page.subtitle }}</h2>
+
+    {% if page.body %}
+        {{ page.body|richtext }}
+    {% endif %}
+
+    <hr>
+
+    {% image page.image fill-200x200 format-jpeg %}
+    {% image page.image width-400 %}
+
+    <hr>
+
+    {% if page.custom_document %}
+        {{ page.custom_document.url }}
+    {% endif %}
+
+    {{ page.custom_document.title }}
+    {{ page.custom_document.description }}
+
+    {% if page.get_cta_url %}
+        {{ page.get_cta_url }}
+    {% endif %}
+
+{% endblock content %}
